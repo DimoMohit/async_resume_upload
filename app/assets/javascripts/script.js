@@ -21,4 +21,5 @@ $(document).ready(function(){
 	$(".crop").on("click",function(){
 		$('img').initailizeCropping();
 	});
+	
 });

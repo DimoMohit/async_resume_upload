@@ -1,5 +1,9 @@
 <% if @error %>
-	$('body').append("<br><%= @error %>");
+	$(".modal-content").html("<div style='padding:10px;'><b>Validation failed:</b> \
+		Resume You are not allowed to upload files,<br> \
+		allowed types: jpg, jpeg, gif, png, pdf, doc, docx,\
+	 Resume cant be blank</div>");
+	$(".modal").modal("show");
 <% else %>
 	<% if remotipart_submitted? %>
 	  $('body').append("<div class='container'>\
@@ -32,6 +36,6 @@
 			$('img').initailizeCropping();
 		});
 	<% else %>
-	  $('body').append("Error:Unable to upload");
+	  	$('.modal-content').html("Error:Unable to upload");
 	<% end %>
 <% end %>
