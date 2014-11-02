@@ -1,12 +1,12 @@
 <%= form_for(:upload,:url =>"/upload", :remote => true,
  :multipart => true) do |f| %>
-	<div><%= f.label :first_name %><br />
+	<div><%= f.label :first_name %>
 	<%= f.text_field :first_name, :autofocus => true %></div>
 
-	<div><%= f.label :last_name %><br />
+	<div><%= f.label :last_name %>
 	<%= f.text_field :last_name %></div>
 
-	<div><%= f.label :resume %><br />
+	<div><%= f.label :resume %> <small> (.pdf or .docx)</small>
 	<%= f.file_field :resume %></div>
 
 	<div><%= f.submit "Upload" %></div>

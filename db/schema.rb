@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031210916) do
+ActiveRecord::Schema.define(version: 20141101194816) do
 
   create_table "resumes", force: true do |t|
     t.string   "first_name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141031210916) do
     t.text     "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.binary   "resume"
   end
 
   create_table "users", force: true do |t|

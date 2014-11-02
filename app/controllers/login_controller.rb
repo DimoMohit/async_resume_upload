@@ -2,22 +2,24 @@ class LoginController < ApplicationController
 	def index
 	end
 	def create
-		respond_to do |format|
-		    if remotipart_submitted? 
-		    	@resume = Resume.new
-		    	pref =  Time.now.to_i
-				if(FileUtils.mkdir_p("public/resume/#{pref}").length)
-				    File.open(Rails.root.join('public','resume',"#{pref}", params[:upload][:resume].original_filename), 'wb') do |file|
-						  file.write(params[:upload][:resume].read)
+		begin
+			respond_to do |format|
+			    if remotipart_submitted? 
+					begin
+				    	first_name = params[:upload][:first_name]
+				    	last_name = params[:upload][:last_name]
+						puts params[:upload][:first_name]
+						@resume=Resume.create!( :first_name=>first_name,
+							:last_name=>last_name,
+							:resume => params[:upload][:resume])
+					rescue Exception=>e
+						@error=e
 					end
-			    	@resume.first_name = params[:upload][:first_name]
-			    	@resume.last_name = params[:upload][:last_name]
-			    	@resume.image_url = "/resume/#{pref}/#{params[:upload][:resume].original_filename}"
-					puts params[:upload][:first_name]
-					@resume.save
 					format.js
 				end
 			end
+		rescue
+			@error="Not Valid Format"
 		end
 	end
 	def view
