@@ -5,7 +5,7 @@ FormTagDemo::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'login#index'
 
-  post '/upload' => 'login#create'
+  post '/upload' => 'login#create',:defaults => { :format => 'js' }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

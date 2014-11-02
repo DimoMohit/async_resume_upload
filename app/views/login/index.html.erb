@@ -1,18 +1,18 @@
-<center style="padding: 10px;">
+<center style="padding: 10px;" class="row">
 	<%= form_for(:upload,:url =>"/upload", :remote => true,
 	 :multipart => true) do |f| %>
-		<div><%= f.label :first_name %>
+		<div class="col-xs-12"><%= f.label :first_name %>
 		<%= f.text_field :first_name, :autofocus => true %></div>
 
-		<div><%= f.label :last_name %>
+		<div class="col-xs-12"><%= f.label :last_name %>
 		<%= f.text_field :last_name, :required=> true %></div>
 
-		<div><%= f.label :profile_pic %> <small> (.gif or .png or .jpg)</small>
-		<%= f.file_field :profile_pic %></div>
+		<div class="col-xs-12"><%= f.label :profile_pic %> <small> (.gif or .png or .jpg)</small>
+		<%= f.file_field :profile_pic,:class=>"btn btn-primary" %></div>
 
-		<div><%= f.label :resume %> <small> (.pdf or .docx)</small>
-		<%= f.file_field :resume, :required=> true %></div>
+		<div class="col-xs-12"><%= f.label :resume %> <small> (.pdf or .docx)</small>
+		<%= f.file_field :resume, :required=> true ,:class=>"btn btn-primary" %></div>
 
-		<div><%= f.submit "Upload" %></div>
+		<div class="col-xs-12"><%= f.submit "Upload",:class=>"btn btn-primary" %></div>
 	<% end %>
 </center>

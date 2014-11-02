@@ -8,15 +8,16 @@ class LoginController < ApplicationController
 					begin
 				    	first_name = params[:upload][:first_name]
 				    	last_name = params[:upload][:last_name]
-						puts params[:upload][:first_name]
+						puts params[:upload][:resume]
 						@resume=Resume.create!( :first_name=>first_name,
 							:last_name=>last_name,
 							:profile_pic=>params[:upload][:profile_pic],
 							:resume => params[:upload][:resume])
+						@file_size=File.size(@resume.resume.path)
 					rescue Exception=>e
 						@error=e
 					end
-					format.js
+					render format.js
 				end
 			end
 		rescue

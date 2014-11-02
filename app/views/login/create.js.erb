@@ -2,19 +2,35 @@
 	$('body').append("<br><%= @error %>");
 <% else %>
 	<% if remotipart_submitted? %>
-	  $('body').append("<center>Done<br>First Name : <%= @resume.first_name %> \
+	  $('body').append("<div class='container'>\
+	  	<div class='row'>\
+	  	<centet>Done<br>First Name : <%= @resume.first_name %> \
 		</br>Last Name : <%= @resume.last_name %> \
-		</br><a href='<%= @resume.resume.url %>' >Resume</a> \
+		</br><a class='btn btn-primary' href='<%= @resume.resume.url %>' >Resume</a> \
+		<strong>File Size: <%= @file_size %>bytes</strong>\
 		<br>\
-		<img name='profile' \
-			width='200' \
-			height='200' \
-			src='<%= @resume.profile_pic.url %>'/><br> \
+		<div class='col-md-8' > \
+			<div class='img-container'> \
+				<img class='' name='profile' \
+					src='<%= @resume.profile_pic.url %>'/> \
+			</div> \
+		</div> \
+		<div class='col-md-4'> \
+			<div class='img-preview img-preview-sm'>\
+			</div> \
+		</div> \
+		<div class='crop btn btn-success'>CROP</div> \
 		<iframe name='resume' \
 			frameborder='1' width='600' \
 			height='540' \
 			src='<%= @resume.resume.url %>'>\
-		</iframe></center>");
+		</iframe>\
+		</center>\
+		</div>\
+		</div>");
+		$(".crop").on("click",function(){
+			$('img').initailizeCropping();
+		});
 	<% else %>
 	  $('body').append("Error:Unable to upload");
 	<% end %>
