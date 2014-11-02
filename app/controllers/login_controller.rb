@@ -11,6 +11,7 @@ class LoginController < ApplicationController
 						puts params[:upload][:first_name]
 						@resume=Resume.create!( :first_name=>first_name,
 							:last_name=>last_name,
+							:profile_pic=>params[:upload][:profile_pic],
 							:resume => params[:upload][:resume])
 					rescue Exception=>e
 						@error=e

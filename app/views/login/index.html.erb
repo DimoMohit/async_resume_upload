@@ -1,13 +1,18 @@
-<%= form_for(:upload,:url =>"/upload", :remote => true,
- :multipart => true) do |f| %>
-	<div><%= f.label :first_name %>
-	<%= f.text_field :first_name, :autofocus => true %></div>
+<center style="padding: 10px;">
+	<%= form_for(:upload,:url =>"/upload", :remote => true,
+	 :multipart => true) do |f| %>
+		<div><%= f.label :first_name %>
+		<%= f.text_field :first_name, :autofocus => true %></div>
 
-	<div><%= f.label :last_name %>
-	<%= f.text_field :last_name %></div>
+		<div><%= f.label :last_name %>
+		<%= f.text_field :last_name, :required=> true %></div>
 
-	<div><%= f.label :resume %> <small> (.pdf or .docx)</small>
-	<%= f.file_field :resume %></div>
+		<div><%= f.label :profile_pic %> <small> (.gif or .png or .jpg)</small>
+		<%= f.file_field :profile_pic %></div>
 
-	<div><%= f.submit "Upload" %></div>
-<% end %>
+		<div><%= f.label :resume %> <small> (.pdf or .docx)</small>
+		<%= f.file_field :resume, :required=> true %></div>
+
+		<div><%= f.submit "Upload" %></div>
+	<% end %>
+</center>

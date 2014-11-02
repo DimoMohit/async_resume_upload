@@ -2,15 +2,19 @@
 	$('body').append("<br><%= @error %>");
 <% else %>
 	<% if remotipart_submitted? %>
-	  $('body').append("Done<br>First Name : <%= @resume.first_name %> \
+	  $('body').append("<center>Done<br>First Name : <%= @resume.first_name %> \
 		</br>Last Name : <%= @resume.last_name %> \
 		</br><a href='<%= @resume.resume.url %>' >Resume</a> \
 		<br>\
+		<img name='profile' \
+			width='200' \
+			height='200' \
+			src='<%= @resume.profile_pic.url %>'/><br> \
 		<iframe name='resume' \
 			frameborder='1' width='600' \
 			height='540' \
 			src='<%= @resume.resume.url %>'>\
-		</iframe>");
+		</iframe></center>");
 	<% else %>
 	  $('body').append("Error:Unable to upload");
 	<% end %>
